@@ -1,0 +1,52 @@
+{% extends 'klvr/base.html' %}
+{% block content %}
+<div class="col-md-9 pane"  >
+<div class="wrap">
+  <div class="col-md-12 pane_post">
+    <div class="post">
+      <!-- ORDER NAME  -->
+          {% if user.id == task.author.id%}
+        <a class="btn" style="float:right">Delete</a>
+        <a ng-click="task_editable()" class="btn" style="float:right" ng-show="!is_edit">Edit</a>
+        <a ng-click="task_editable()" class="btn" style="float:right" ng-show="is_edit">Cancel</a>
+        {% endif %}
+      <b>{{ task.author.first_name}} {{ task.author.last_name }} <a >@{{ task.author.username }}</a></b>
+        <a style="font-size:12px;">{{ task.published_date | timesince }} ago</a>
+    <h1><a href="{% url 'task_detail' pk=task.pk %}" ng-show="!is_edit">{{ task.title }}</a></h1>
+        <input type="text" class="form-control" value="{{ task.title }}" ng-show="is_edit"><br>
+    <!-- ORDER DESCRP -->
+    <p class="wrap" ng-show="!is_edit">{{ task.text|linebreaksbr }}</p>
+        <textarea name="" id="" cols="30" rows="8" class="form-control" ng-show="is_edit">{{ task.text }}</textarea><br>
+        <!-- ORDER TAGS -->
+
+        {% for tag in task.tags.all %}
+        <a class="btn tag">{{ tag.tagname }}</a>
+        {% endfor %}
+
+        <hr>
+    <!-- ORDER Deadline  -->
+
+    <div ng-show="!is_edit">
+        <b>Deadline : </b><a href="#">{{ task.deadline  }}</a><br>
+        <b>ending for : </b><a href="#">{{ task.deadline | timeuntil }}</a><br>
+        <!-- ORDER money -->
+        <b>Price : <a href="#" class="money">
+            {% if task.price == 0 %}
+            free food :)
+            {% else %}
+            〒{{ task.price }}
+            {% endif %}
+        </a></b><br>
+    </div>
+        <div class="row" ng-show="is_edit">
+            <div class="col-md-5">
+                 <b><a>Change deadline for '{{ task.deadline }}'? </a></b><input class="form-control" type="date"  id="id_deadline" name="deadline"><br>
+                <b><a>Change price ?</a></b>  <input  type="number" class="form-control" placeholder="〒 999.9" id="id_price" name="price">
+            </div>
+    </div>
+        <!-- ORDER respond -->
+    </div>
+  </div>
+</div>
+</div>
+{% endblock content %}

@@ -1,0 +1,48 @@
+
+{% load staticfiles %}
+    <html>
+        <head>
+            <title>klvr test</title>
+            <!--this is the forn part -->
+            <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+            <!--this is onlye for  css , less an doading bootstrap -->
+            <link rel="stylesheet/less" type="text/css" href="{% static 'css/style.less' %}">
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+            <!--this part onlye for JS , JQUERY ANGLAR-->
+            <script type="text/javascript" src="{% static 'js/jquery-1.10.2.min.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/less.min.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/angular.min.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+        </head>
+    {% if user.is_authenticated %}
+        <body ng-app="klever" ng-controller="kleverCtrl">
+        {% include "klvr/navbar.html"%}
+         <div class="container" style="margin-top:50px !important">
+            <div class="row">
+            <!-- SEARCH SIDE -->
+            {% include "klvr/search_side.html" %}
+            <!--RIGHT SIDE -->
+            {% include "klvr/sidebar.html" %}
+            <!-- LEFT SIDE  -->
+            {% block content %}
+            {% endblock %}
+            </div>
+             </div>
+        </body>
+    {% else %}
+        <body ng-app="klever" ng-controller="kleverCtrl" class="wrapper">
+            {% include "klvr/navbar.html"%}
+            <div class="container" style="margin-top:50px !important">
+            <div class="row">
+            {% include "klvr/brand_general.html" %}
+            {% include "klvr/auth/login_section.html"%}
+            </div>
+            </div>
+
+        </body>
+    {% endif %}
+
+    </body>
+    </html>

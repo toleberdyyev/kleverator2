@@ -1,0 +1,62 @@
+{% extends 'klvr/base.html' %}
+{% block content %}
+
+<div class="col-md-9 pane"  >
+<div class="wrap">
+  <div class="col-md-12  pane_post">
+    <div class="post">
+              <h2>Creating Task</h2>
+
+        <form action="{% url 'task_new' %}" method="POST" class="post-form">
+           {% csrf_token %}
+        <div class="form-group">
+          <label for="exampleInputEmail1">Title of task</label>
+          <input   type="text" class="form-control" aria-describedby="emailHelp" placeholder="title of your task" id='id_title' name="title" required>
+          <small id="fileHelp" class="form-text text-muted">This section it the main title of your task.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleTextarea">Descriptioon of task</label>
+          <textarea ng-model='descrp' class="form-control" rows="6" placeholder="text or description of your task ... " id="id_text" name="text" required=""></textarea>
+        </div>
+        <div class="row">
+            <div class="col-xs-12"><label for="exampleTextarea">Write a tags for this task</label></div>
+            <div class="col-xs-10">
+            <input class="form-control" type="text"  ng-model="tagline" ng-change="typeTags(tagline)"  placeholder="html,css,javascript.." >
+                <input type="hidden" id="id_tagger" name="tagger" ng-value="tagger">
+            </div>
+            <div class="col-xs-2 text-left"><a class="btn tag"  style="width:100%" >add</a></div>
+            <br>
+        </div>
+
+        <div class="pane" ng-show="tags_basket.length>0 || tags.length>0">
+            <br>
+           <a >You can choose any variants</a><br>
+            <a class="btn btn-warning" ng-repeat="x in tags" ng-click="tags_basket_add(x)" style="margin:1" ng-show="IsSelected(x)"> // x.tagname //</a>
+            <hr>
+            <a class="btn tag" ng-repeat="x in tags_basket" ng-click='tags_basket_remove($index)' style="margin:1"> // x.tagname //</a>
+
+        </div>
+        <div class="row">
+            <br>
+          <div class="col-xs-5">
+            <label for="exampleTextarea">Date of deadline this deadline</label>
+            <input class="form-control" type="date"  id="id_deadline" name="deadline" required>
+              <small id="fileHelp" class="form-text text-muted">Remember that date should be in Future  :)</small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-5"><br>
+            <label for="exampleInputEmail1">Price of project</label>
+            <input  type="number" class="form-control" placeholder="〒 999.9" id="id_price" name="price" required>
+            <small id="fileHelp" class="form-text text-muted">In this section you also can set 0 and it will be 'project for free food :)'</small>
+
+          </div>
+        </div><hr>
+
+        <button type="submit" class="btn btn-success" ng-click='CreatTask(title,descrp,tags,date,price)'>Create task</button>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock content %}

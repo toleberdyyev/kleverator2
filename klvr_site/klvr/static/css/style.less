@@ -1,0 +1,227 @@
+@green_normal : #53c68c;
+@green_down : #339966;
+//
+@gray_normal:#EDEEF0;
+@gray_down: #cccccc;
+@gray_dark:#3a3e45;
+//black soft
+@black_soft_rgba: rgba(51, 51, 51, .5);
+@black_soft_normal : #333333;
+//
+@blue: #337AB7;
+//
+@red_normal:#990000;
+//
+@radius : 2px;
+@heightContoller:30px;
+@textPadding : 15px;
+@border : 3px;
+// OVERALL
+
+body{
+  padding-top: 10px !important;
+  margin: 0;
+  padding: 0;
+  background-color: @gray_normal !important;}
+button{
+  border-radius: @border !important;
+  border: none !important;}
+
+button:focus{outline:0 !important;}
+input:focus{ outline:0 !important;}
+input{
+border:none !important;
+border-radius:@radius !important;
+}
+hr{margin: 2px;}
+// NAVBAR
+nav.navbar{
+  button{
+    border: 1px solid white;
+    background-color: @green_down !important;
+    span.icon-bar{
+     background-color: white;
+  }}
+  background-color: @green_normal;
+  border-radius:0px;
+  border-bottom: 4px solid @green_down;
+
+  li{padding-right:  5px;}
+  a{color: white !important}
+  a:hover{background-color: @green_down !important;}
+  a.active{background-color: @green_down !important;}
+  a.error{ background-color: @red_normal !important}
+  a:focus{background-color: @green_down !important;}
+}
+
+//
+BRAND _ GENERALL
+div.brand_general{
+    h1{ color:white !important;}
+}
+
+//SEARCH
+div.searchSide{
+    padding:0 5 0 5;
+    margin-bottom:-10px;
+    input{border-bottom: @border solid @gray_down !important;}
+    input:focus{ outline:none !important;}
+
+}
+//wrapper_back
+.wrapper{
+background: url('https://ksr-ugc.imgix.net/assets/013/089/254/6f4752d71f2c89f0d14b4116c975cb34_original.gif?w=680&fit=max&v=1468793571&q=92&s=b1f19614c86ce9cd479ac53d1a2c5e9b') no-repeat   center center fixed;
+pacity: 0.2;
+filter: alpha(opacity=20);
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;}
+//PANE
+div.pane{
+    input{border-radius:none !important;}
+    padding:0;
+    div.pane_post{
+        padding: 0 5px 10px 5px;
+        h1,h2,h3,h4,h5,h6,p.wrap{
+           white-space: pre-wrap;      /* CSS3 */
+           white-space: -moz-pre-wrap; /* Firefox */
+           white-space: -pre-wrap;     /* Opera <7 */
+           white-space: -o-pre-wrap;   /* Opera 7 */
+           word-wrap: break-word;      /* IE */
+        }
+      div.post{
+        border-bottom: @border solid @gray_down;
+        background-color: white;
+        padding: @textPadding;
+        border-radius: @radius;
+        textarea{
+          resize: none !important;
+        }input{
+          border: 1px solid @gray_down !important;
+        }
+
+      }div.fade_post{
+        h1{ color:white }
+        p{ color:white }
+        background-color: @black_soft_rgba;
+        padding: 1 10px 1 10px;
+      }
+    }
+    a.money{ color: @green_normal;}
+    a.tag{
+      color: white;
+      background:@blue;
+      padding: 7px;
+      border-radius: 3px;
+      display: inline-block;
+
+    }
+
+
+    // this part ONLY FRO SIDEBAR
+    .profile {
+    margin: 20px 0;
+    }
+    /* Profile sidebar */
+    .profile-sidebar {
+    border-radius: @radius;
+    border-bottom: @border solid @gray_down;
+    padding: 20px 0 10px 0;
+    background: #fff;
+    }
+
+    .profile-userpic img {
+    float: none;
+    margin: 0 auto;
+    width: 50%;
+
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    border-radius: 50% !important;
+    }
+
+    .profile-usertitle {
+    text-align: center;
+    margin-top: 20px;
+    }
+
+    .profile-usertitle-name {
+    color: #5a7391;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 7px;
+    }
+
+    .profile-usertitle-job {
+    text-transform: uppercase;
+    color: #5b9bd1;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    }
+
+    .profile-userbuttons {
+    text-align: center;
+    margin-top: 10px;
+    }
+
+    .profile-userbuttons .btn {
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 15px;
+    margin-right: 5px;
+    }
+
+    .profile-userbuttons .btn:last-child {
+    margin-right: 0px;
+    }
+
+    .profile-usermenu {
+    margin-top: 30px;
+    }
+
+    .profile-usermenu ul li {
+    border-bottom: 1px solid #f0f4f7;
+    }
+
+    .profile-usermenu ul li:last-child {
+    border-bottom: none;
+    }
+
+    .profile-usermenu ul li a {
+    color: #93a3b5;
+    font-size: 14px;
+    font-weight: 400;
+    }
+
+    .profile-usermenu ul li a i {
+    margin-right: 8px;
+    font-size: 14px;
+    }
+
+    .profile-usermenu ul li a:hover {
+    background-color: #fafcfd;
+    color: #5b9bd1;
+    }
+
+    .profile-usermenu ul li.active {
+    border-bottom: none;
+    }
+
+    .profile-usermenu ul li.active a {
+    color: #5b9bd1;
+    background-color: #f6f9fb;
+    border-left: 2px solid #5b9bd1;
+    margin-left: -2px;
+    }
+
+    /* Profile Content */
+    .profile-content {
+    padding: 20px;
+    background: #fff;
+    min-height: 460px;
+    }
+}
+
